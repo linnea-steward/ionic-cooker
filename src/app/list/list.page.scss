@@ -1,0 +1,14 @@
+/** @format */
+
+ion-content ion-toolbar {
+	--background: translucent;
+}
+
+.recipe-item-label {
+	display: flex;
+	flex-direction: column;
+}
+
+.recipe-item-meta {
+	overflow-x: scroll;
+}

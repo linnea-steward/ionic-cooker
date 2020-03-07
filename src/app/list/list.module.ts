@@ -5,10 +5,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { Tab2Page } from './tab2.page';
+import { ListPage } from './list.page';
 
 @NgModule({
-	imports: [IonicModule, CommonModule, FormsModule, RouterModule.forChild([{ path: '', component: Tab2Page }])],
-	declarations: [Tab2Page]
+	imports: [IonicModule, CommonModule, FormsModule, RouterModule.forChild([{ path: '', component: ListPage }])],
+	declarations: [ListPage]
 })
-export class Tab2PageModule {}
+export class ListPageModule {}

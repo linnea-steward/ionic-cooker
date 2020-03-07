@@ -1,0 +1,23 @@
+{
+	"arrowParens": "always",
+	"bracketSpacing": true,
+	"jsxBracketSameLine": true,
+	"tabWidth": 4,
+	"printWidth": 300,
+	"useTabs": true,
+	"trailingComma": "none",
+	"semi": true,
+	"singleQuote": true,
+	"insertPragma": true,
+	"htmlWhitespaceSensitivity": "css",
+	"endOfLine": "auto",
+	"overrides": [
+		{
+			"files": "*.yml",
+			"options": {
+				"tabWidth": 2,
+				"useTabs": false
+			}
+		}
+	]
+}
