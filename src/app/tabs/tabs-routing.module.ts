@@ -6,7 +6,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
 	{
-		path: 'tabs',
+		path: 'recipes',
 		component: TabsPage,
 		children: [
 			{
@@ -19,33 +19,33 @@ const routes: Routes = [
 				]
 			},
 			{
-				path: 'tab2',
+				path: 'new',
 				children: [
 					{
 						path: '',
-						loadChildren: () => import('../tab2/tab2.module').then((m) => m.Tab2PageModule)
+						loadChildren: () => import('../new/new.module').then((m) => m.NewPageModule)
 					}
 				]
 			},
 			{
-				path: 'tab3',
+				path: 'cook',
 				children: [
 					{
 						path: '',
-						loadChildren: () => import('../tab3/tab3.module').then((m) => m.Tab3PageModule)
+						loadChildren: () => import('../cook/cook.module').then((m) => m.CookPageModule)
 					}
 				]
 			},
 			{
 				path: '',
-				redirectTo: '/tabs/list',
+				redirectTo: '/recipes/list',
 				pathMatch: 'full'
 			}
 		]
 	},
 	{
 		path: '',
-		redirectTo: '/tabs/list',
+		redirectTo: '/recipes/list',
 		pathMatch: 'full'
 	}
 ];
