@@ -28,7 +28,7 @@
 			type="number"></ion-input>
 	</ion-item>
 	<ion-item>
-		<ion-label>Tags</ion-label>
+		<ion-label position="floating">Tags</ion-label>
 		<div class="ion-chip-group">
 			<ion-chip *ngFor="let tag of recipe.tags"
 				slot="start"
@@ -40,4 +40,53 @@
 				(keydown)="createChip($event)"></ion-input>
 		</div>
 	</ion-item>
+	<ion-item>
+		<ion-list class="full-width-list">
+			<ion-list-header>
+				<ion-label>Ingredients</ion-label>
+				<ion-button expand="block"
+					(click)="addIngredient($event)">Add</ion-button>
+			</ion-list-header>
+			<ion-item *ngFor="let ingredient of recipe.ingredients; let i = index">
+				<ion-input placeholder="Enter a new ingredient..."
+					(keydown)="keydownIngredient($event, i)"
+					id="ingredient-{{i}}"></ion-input>
+				<ion-icon name="close-circle-outline"
+					(click)="removeIngredient($event, i)"></ion-icon>
+			</ion-item>
+		</ion-list>
+	</ion-item>
+	<ion-item>
+		<ion-list class="full-width-list">
+			<ion-list-header>
+				<ion-label>Instructions</ion-label>
+				<ion-button expand="block"
+					(click)="addInstruction($event)">Add</ion-button>
+			</ion-list-header>
+			<ion-item *ngFor="let instruction of recipe.instructions; let i = index">
+				<ion-label>{{i + 1}}.</ion-label>
+				<ion-input placeholder="Enter a new step..."
+					id="instruction-{{i}}"
+					(keydown)="keydownInstruction($event, i)">
+				</ion-input>
+				<ion-icon name="close-circle-outline"
+					(click)="removeInstruction($event, i)"></ion-icon>
+			</ion-item>
+		</ion-list>
+	</ion-item>
+	<ion-fab vertical="bottom"
+		horizontal="end"
+		slot="fixed">
+		<ion-fab-button>
+			<ion-icon name="add"></ion-icon>
+		</ion-fab-button>
+		<ion-fab-list side="top">
+			<ion-fab-button (click)="save($event)">
+				<ion-icon name="save"></ion-icon>
+			</ion-fab-button>
+			<ion-fab-button (click)="reset($event)">
+				<ion-icon name="refresh"></ion-icon>
+			</ion-fab-button>
+		</ion-fab-list>
+	</ion-fab>
 </ion-content>
