@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
 	<ion-toolbar>
 		<ion-title>
-			Cook
+			{{title || 'Cook'}}
 		</ion-title>
 	</ion-toolbar>
 </ion-header>
@@ -9,7 +9,50 @@
 <ion-content [fullscreen]="true">
 	<ion-header collapse="condense">
 		<ion-toolbar>
-			<ion-title size="large">Cook</ion-title>
+			<ion-title size="large">{{title || 'Cook'}}
+			</ion-title>
 		</ion-toolbar>
 	</ion-header>
+
+	<ion-toolbar>
+		<ion-segment value="
+					summary"
+			(ionChange)="segmentChanged($event)">
+			<ion-segment-button value="summary">Summary</ion-segment-button>
+			<ion-segment-button value="ingredients">Ingredients</ion-segment-button>
+			<ion-segment-button value="steps">Steps</ion-segment-button>
+		</ion-segment>
+	</ion-toolbar>
+
+	<div class="tab-contents">
+		<ion-grid *ngIf="selectedTab === 'summary'">
+			<ion-row class='recipe-name'>
+				{{activeRecipe.name}}
+			</ion-row>
+			<ion-row>
+				{{activeRecipe.description}}
+			</ion-row>
+			<ion-row>
+				<ion-button expand="block"
+					[href]="activeRecipe.link">Link To Original Recipe</ion-button>
+			</ion-row>
+		</ion-grid>
+
+		<ion-list *ngIf="selectedTab === 'ingredients'">
+			<ion-item *ngFor="let ingredient of activeRecipe.ingredients">
+				<ion-label>
+					{{ingredient.name}}
+				</ion-label>
+			</ion-item>
+		</ion-list>
+		<ion-slides [scrollbar]="true"
+			(ionSlideDidChange)="slideChanged($event)"
+			*ngIf="selectedTab === 'steps'"
+			[options]="slideOptions"
+			class="steps">
+			<ion-slide *ngFor="let step of activeRecipe.steps">
+				<div class="steps--block">{{step.description}}</div>
+			</ion-slide>
+		</ion-slides>
+	</div>
 </ion-content>
