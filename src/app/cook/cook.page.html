@@ -45,14 +45,17 @@
 				</ion-label>
 			</ion-item>
 		</ion-list>
-		<ion-slides [scrollbar]="true"
-			(ionSlideDidChange)="slideChanged($event)"
-			*ngIf="selectedTab === 'steps'"
-			[options]="slideOptions"
-			class="steps">
-			<ion-slide *ngFor="let step of activeRecipe.steps">
-				<div class="steps--block">{{step.description}}</div>
-			</ion-slide>
-		</ion-slides>
+		<div class="slides"
+			*ngIf="selectedTab === 'steps'">
+
+			<ion-slides [scrollbar]="true"
+				(ionSlideDidChange)="slideChanged($event)"
+				[options]="slideOptions"
+				class="steps">
+				<ion-slide *ngFor="let step of activeRecipe.steps">
+					<div class="steps--block">{{step.description}}</div>
+				</ion-slide>
+			</ion-slides>
+		</div>
 	</div>
 </ion-content>
